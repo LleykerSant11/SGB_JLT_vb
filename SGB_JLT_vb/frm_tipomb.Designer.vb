@@ -40,17 +40,12 @@ Partial Class frm_tipomb
         Me.SiglasTextBox = New System.Windows.Forms.TextBox()
         Me.lb_detusuario = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.IconButton2 = New FontAwesome.Sharp.IconButton()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.IconButton1 = New FontAwesome.Sharp.IconButton()
-        Me.txt_buscat = New System.Windows.Forms.TextBox()
-        Me.btn_descargarexcel = New FontAwesome.Sharp.IconButton()
+        Me.txt_buscatmb = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
         Me.TIPO_M_BIBLIOGRAFICOTableAdapter = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.TIPO_M_BIBLIOGRAFICOTableAdapter()
         Me.TableAdapterManager = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.TableAdapterManager()
         Me.TIPO_M_BIBLIOGRAFICODataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoMB = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         TipoMBLabel = New System.Windows.Forms.Label()
@@ -110,6 +105,7 @@ Partial Class frm_tipomb
         'btn_guardarTMB
         '
         Me.btn_guardarTMB.BackColor = System.Drawing.Color.DarkGreen
+        Me.btn_guardarTMB.Enabled = False
         Me.btn_guardarTMB.ForeColor = System.Drawing.Color.White
         Me.btn_guardarTMB.IconChar = FontAwesome.Sharp.IconChar.TelegramPlane
         Me.btn_guardarTMB.IconColor = System.Drawing.Color.White
@@ -144,6 +140,7 @@ Partial Class frm_tipomb
         'btn_actualizarTMB
         '
         Me.btn_actualizarTMB.BackColor = System.Drawing.Color.SteelBlue
+        Me.btn_actualizarTMB.Enabled = False
         Me.btn_actualizarTMB.ForeColor = System.Drawing.Color.White
         Me.btn_actualizarTMB.IconChar = FontAwesome.Sharp.IconChar.Broom
         Me.btn_actualizarTMB.IconColor = System.Drawing.Color.White
@@ -210,6 +207,7 @@ Partial Class frm_tipomb
         'TipoMBTextBox
         '
         Me.TipoMBTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TIPO_M_BIBLIOGRAFICOBindingSource, "TipoMB", True))
+        Me.TipoMBTextBox.Enabled = False
         Me.TipoMBTextBox.Location = New System.Drawing.Point(90, 52)
         Me.TipoMBTextBox.Name = "TipoMBTextBox"
         Me.TipoMBTextBox.Size = New System.Drawing.Size(100, 20)
@@ -228,6 +226,7 @@ Partial Class frm_tipomb
         'DescripcionTextBox
         '
         Me.DescripcionTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TIPO_M_BIBLIOGRAFICOBindingSource, "Descripcion", True))
+        Me.DescripcionTextBox.Enabled = False
         Me.DescripcionTextBox.Location = New System.Drawing.Point(90, 78)
         Me.DescripcionTextBox.Name = "DescripcionTextBox"
         Me.DescripcionTextBox.Size = New System.Drawing.Size(100, 20)
@@ -236,6 +235,7 @@ Partial Class frm_tipomb
         'SiglasTextBox
         '
         Me.SiglasTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.TIPO_M_BIBLIOGRAFICOBindingSource, "Siglas", True))
+        Me.SiglasTextBox.Enabled = False
         Me.SiglasTextBox.Location = New System.Drawing.Point(90, 104)
         Me.SiglasTextBox.Name = "SiglasTextBox"
         Me.SiglasTextBox.Size = New System.Drawing.Size(100, 20)
@@ -254,90 +254,28 @@ Partial Class frm_tipomb
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
-        Me.Panel1.Controls.Add(Me.IconButton2)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
-        Me.Panel1.Controls.Add(Me.IconButton1)
-        Me.Panel1.Controls.Add(Me.txt_buscat)
-        Me.Panel1.Controls.Add(Me.btn_descargarexcel)
+        Me.Panel1.Controls.Add(Me.txt_buscatmb)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Location = New System.Drawing.Point(246, 9)
+        Me.Panel1.Location = New System.Drawing.Point(412, 86)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(823, 66)
+        Me.Panel1.Size = New System.Drawing.Size(425, 53)
         Me.Panel1.TabIndex = 21
         '
-        'IconButton2
+        'txt_buscatmb
         '
-        Me.IconButton2.IconChar = FontAwesome.Sharp.IconChar.Broom
-        Me.IconButton2.IconColor = System.Drawing.Color.Black
-        Me.IconButton2.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconButton2.IconSize = 20
-        Me.IconButton2.Location = New System.Drawing.Point(763, 23)
-        Me.IconButton2.Name = "IconButton2"
-        Me.IconButton2.Size = New System.Drawing.Size(29, 23)
-        Me.IconButton2.TabIndex = 17
-        Me.IconButton2.UseVisualStyleBackColor = True
-        '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(307, 23)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 14
-        '
-        'IconButton1
-        '
-        Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.Search
-        Me.IconButton1.IconColor = System.Drawing.Color.Black
-        Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconButton1.IconSize = 20
-        Me.IconButton1.Location = New System.Drawing.Point(728, 23)
-        Me.IconButton1.Name = "IconButton1"
-        Me.IconButton1.Size = New System.Drawing.Size(29, 23)
-        Me.IconButton1.TabIndex = 16
-        Me.IconButton1.UseVisualStyleBackColor = True
-        '
-        'txt_buscat
-        '
-        Me.txt_buscat.Location = New System.Drawing.Point(434, 23)
-        Me.txt_buscat.Name = "txt_buscat"
-        Me.txt_buscat.Size = New System.Drawing.Size(288, 20)
-        Me.txt_buscat.TabIndex = 14
-        '
-        'btn_descargarexcel
-        '
-        Me.btn_descargarexcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel
-        Me.btn_descargarexcel.IconColor = System.Drawing.Color.Green
-        Me.btn_descargarexcel.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btn_descargarexcel.IconSize = 20
-        Me.btn_descargarexcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btn_descargarexcel.Location = New System.Drawing.Point(7, 26)
-        Me.btn_descargarexcel.Name = "btn_descargarexcel"
-        Me.btn_descargarexcel.Size = New System.Drawing.Size(130, 28)
-        Me.btn_descargarexcel.TabIndex = 14
-        Me.btn_descargarexcel.Text = "Descargar Excel"
-        Me.btn_descargarexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_descargarexcel.UseVisualStyleBackColor = True
+        Me.txt_buscatmb.Location = New System.Drawing.Point(130, 23)
+        Me.txt_buscatmb.Name = "txt_buscatmb"
+        Me.txt_buscatmb.Size = New System.Drawing.Size(276, 20)
+        Me.txt_buscatmb.TabIndex = 14
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(234, 26)
+        Me.Label1.Location = New System.Drawing.Point(3, 26)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(64, 13)
+        Me.Label1.Size = New System.Drawing.Size(121, 13)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Busacr por: "
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(3, 3)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(245, 19)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "Listado de M.Bibliografico:"
+        Me.Label1.Text = "Busacr por descripcion: "
         '
         'TIPO_M_BIBLIOGRAFICOTableAdapter
         '
@@ -356,32 +294,41 @@ Partial Class frm_tipomb
         '
         'TIPO_M_BIBLIOGRAFICODataGridView
         '
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.AllowUserToAddRows = False
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.AllowUserToDeleteRows = False
         Me.TIPO_M_BIBLIOGRAFICODataGridView.AutoGenerateColumns = False
         Me.TIPO_M_BIBLIOGRAFICODataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.TIPO_M_BIBLIOGRAFICODataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.TipoMB, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3})
         Me.TIPO_M_BIBLIOGRAFICODataGridView.DataSource = Me.TIPO_M_BIBLIOGRAFICOBindingSource
-        Me.TIPO_M_BIBLIOGRAFICODataGridView.Location = New System.Drawing.Point(439, 186)
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.Enabled = False
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.Location = New System.Drawing.Point(412, 174)
         Me.TIPO_M_BIBLIOGRAFICODataGridView.Name = "TIPO_M_BIBLIOGRAFICODataGridView"
-        Me.TIPO_M_BIBLIOGRAFICODataGridView.Size = New System.Drawing.Size(340, 220)
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.ReadOnly = True
+        Me.TIPO_M_BIBLIOGRAFICODataGridView.Size = New System.Drawing.Size(425, 220)
         Me.TIPO_M_BIBLIOGRAFICODataGridView.TabIndex = 21
         '
-        'DataGridViewTextBoxColumn1
+        'TipoMB
         '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "TipoMB"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "TipoMB"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.TipoMB.DataPropertyName = "TipoMB"
+        Me.TipoMB.HeaderText = "TipoMB"
+        Me.TipoMB.Name = "TipoMB"
+        Me.TipoMB.ReadOnly = True
         '
         'DataGridViewTextBoxColumn2
         '
         Me.DataGridViewTextBoxColumn2.DataPropertyName = "Descripcion"
         Me.DataGridViewTextBoxColumn2.HeaderText = "Descripcion"
         Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 150
         '
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "Siglas"
         Me.DataGridViewTextBoxColumn3.HeaderText = "Siglas"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 130
         '
         'frm_tipomb
         '
@@ -410,13 +357,8 @@ Partial Class frm_tipomb
     Private WithEvents pn_container As Panel
     Private WithEvents lb_detusuario As Label
     Private WithEvents Panel1 As Panel
-    Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
-    Friend WithEvents ComboBox1 As ComboBox
-    Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
-    Friend WithEvents txt_buscat As TextBox
-    Friend WithEvents btn_descargarexcel As FontAwesome.Sharp.IconButton
+    Friend WithEvents txt_buscatmb As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label6 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Private WithEvents btn_guardarTMB As FontAwesome.Sharp.IconButton
     Private WithEvents btn_nuevoTMB As FontAwesome.Sharp.IconButton
@@ -432,6 +374,7 @@ Partial Class frm_tipomb
     Friend WithEvents SiglasTextBox As TextBox
     Friend WithEvents TIPO_M_BIBLIOGRAFICODataGridView As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents TipoMB As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
 End Class

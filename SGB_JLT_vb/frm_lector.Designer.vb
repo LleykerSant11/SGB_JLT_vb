@@ -33,8 +33,6 @@ Partial Class frm_lector
         Me.pn_container = New System.Windows.Forms.Panel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.CodLecTextBox = New System.Windows.Forms.TextBox()
-        Me.LECTORBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.BD_BIBLIOTECA_V2DataSet = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSet()
         Me.TipoLectorComboBox = New System.Windows.Forms.ComboBox()
         Me.NombreApellidosTextBox = New System.Windows.Forms.TextBox()
         Me.TelefonoTextBox = New System.Windows.Forms.TextBox()
@@ -49,14 +47,9 @@ Partial Class frm_lector
         Me.lb_detusuario = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.IconButton2 = New FontAwesome.Sharp.IconButton()
-        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
         Me.IconButton1 = New FontAwesome.Sharp.IconButton()
-        Me.txt_buscat = New System.Windows.Forms.TextBox()
-        Me.btn_descargarexcel = New FontAwesome.Sharp.IconButton()
+        Me.txt_buscal = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.LECTORTableAdapter = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.LECTORTableAdapter()
-        Me.TableAdapterManager = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.TableAdapterManager()
         Me.LECTORDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -65,6 +58,10 @@ Partial Class frm_lector
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.LECTORBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BD_BIBLIOTECA_V2DataSet = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSet()
+        Me.LECTORTableAdapter = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.LECTORTableAdapter()
+        Me.TableAdapterManager = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.TableAdapterManager()
         CodLecLabel = New System.Windows.Forms.Label()
         TipoLectorLabel = New System.Windows.Forms.Label()
         NombreApellidosLabel = New System.Windows.Forms.Label()
@@ -74,10 +71,10 @@ Partial Class frm_lector
         CorreoLabel = New System.Windows.Forms.Label()
         Me.pn_container.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.LECTORBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.BD_BIBLIOTECA_V2DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Panel1.SuspendLayout()
         CType(Me.LECTORDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.LECTORBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BD_BIBLIOTECA_V2DataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'CodLecLabel
@@ -190,16 +187,6 @@ Partial Class frm_lector
         Me.CodLecTextBox.Name = "CodLecTextBox"
         Me.CodLecTextBox.Size = New System.Drawing.Size(121, 20)
         Me.CodLecTextBox.TabIndex = 1
-        '
-        'LECTORBindingSource
-        '
-        Me.LECTORBindingSource.DataMember = "LECTOR"
-        Me.LECTORBindingSource.DataSource = Me.BD_BIBLIOTECA_V2DataSet
-        '
-        'BD_BIBLIOTECA_V2DataSet
-        '
-        Me.BD_BIBLIOTECA_V2DataSet.DataSetName = "BD_BIBLIOTECA_V2DataSet"
-        Me.BD_BIBLIOTECA_V2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'TipoLectorComboBox
         '
@@ -356,15 +343,12 @@ Partial Class frm_lector
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
         Me.Panel1.Controls.Add(Me.IconButton2)
-        Me.Panel1.Controls.Add(Me.ComboBox1)
         Me.Panel1.Controls.Add(Me.IconButton1)
-        Me.Panel1.Controls.Add(Me.txt_buscat)
-        Me.Panel1.Controls.Add(Me.btn_descargarexcel)
+        Me.Panel1.Controls.Add(Me.txt_buscal)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Controls.Add(Me.Label6)
-        Me.Panel1.Location = New System.Drawing.Point(296, 11)
+        Me.Panel1.Location = New System.Drawing.Point(303, 45)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(772, 66)
+        Me.Panel1.Size = New System.Drawing.Size(737, 66)
         Me.Panel1.TabIndex = 18
         '
         'IconButton2
@@ -379,14 +363,6 @@ Partial Class frm_lector
         Me.IconButton2.TabIndex = 17
         Me.IconButton2.UseVisualStyleBackColor = True
         '
-        'ComboBox1
-        '
-        Me.ComboBox1.FormattingEnabled = True
-        Me.ComboBox1.Location = New System.Drawing.Point(307, 23)
-        Me.ComboBox1.Name = "ComboBox1"
-        Me.ComboBox1.Size = New System.Drawing.Size(121, 21)
-        Me.ComboBox1.TabIndex = 14
-        '
         'IconButton1
         '
         Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.Search
@@ -399,61 +375,21 @@ Partial Class frm_lector
         Me.IconButton1.TabIndex = 16
         Me.IconButton1.UseVisualStyleBackColor = True
         '
-        'txt_buscat
+        'txt_buscal
         '
-        Me.txt_buscat.Location = New System.Drawing.Point(434, 23)
-        Me.txt_buscat.Name = "txt_buscat"
-        Me.txt_buscat.Size = New System.Drawing.Size(288, 20)
-        Me.txt_buscat.TabIndex = 14
-        '
-        'btn_descargarexcel
-        '
-        Me.btn_descargarexcel.IconChar = FontAwesome.Sharp.IconChar.FileExcel
-        Me.btn_descargarexcel.IconColor = System.Drawing.Color.Green
-        Me.btn_descargarexcel.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.btn_descargarexcel.IconSize = 20
-        Me.btn_descargarexcel.ImageAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.btn_descargarexcel.Location = New System.Drawing.Point(7, 26)
-        Me.btn_descargarexcel.Name = "btn_descargarexcel"
-        Me.btn_descargarexcel.Size = New System.Drawing.Size(130, 28)
-        Me.btn_descargarexcel.TabIndex = 14
-        Me.btn_descargarexcel.Text = "Descargar Excel"
-        Me.btn_descargarexcel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.btn_descargarexcel.UseVisualStyleBackColor = True
+        Me.txt_buscal.Location = New System.Drawing.Point(127, 25)
+        Me.txt_buscal.Name = "txt_buscal"
+        Me.txt_buscal.Size = New System.Drawing.Size(288, 20)
+        Me.txt_buscal.TabIndex = 14
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(234, 26)
+        Me.Label1.Location = New System.Drawing.Point(17, 28)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(64, 13)
+        Me.Label1.Size = New System.Drawing.Size(104, 13)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Busacr por: "
-        '
-        'Label6
-        '
-        Me.Label6.AutoSize = True
-        Me.Label6.Font = New System.Drawing.Font("MS UI Gothic", 14.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(3, 3)
-        Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(189, 19)
-        Me.Label6.TabIndex = 0
-        Me.Label6.Text = "Listado de Clientes:"
-        '
-        'LECTORTableAdapter
-        '
-        Me.LECTORTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.BIBLIOTECARIOTableAdapter = Nothing
-        Me.TableAdapterManager.DETALLETableAdapter = Nothing
-        Me.TableAdapterManager.LECTORTableAdapter = Me.LECTORTableAdapter
-        Me.TableAdapterManager.MATERIAL_BIBLIOGRAFICOTableAdapter = Nothing
-        Me.TableAdapterManager.PRESTACION_Y_DEVOLUCIONTableAdapter = Nothing
-        Me.TableAdapterManager.TIPO_M_BIBLIOGRAFICOTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.Label1.Text = "Busacr por Nombre: "
         '
         'LECTORDataGridView
         '
@@ -509,6 +445,31 @@ Partial Class frm_lector
         Me.DataGridViewTextBoxColumn7.HeaderText = "Correo"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         '
+        'LECTORBindingSource
+        '
+        Me.LECTORBindingSource.DataMember = "LECTOR"
+        Me.LECTORBindingSource.DataSource = Me.BD_BIBLIOTECA_V2DataSet
+        '
+        'BD_BIBLIOTECA_V2DataSet
+        '
+        Me.BD_BIBLIOTECA_V2DataSet.DataSetName = "BD_BIBLIOTECA_V2DataSet"
+        Me.BD_BIBLIOTECA_V2DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'LECTORTableAdapter
+        '
+        Me.LECTORTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BIBLIOTECARIOTableAdapter = Nothing
+        Me.TableAdapterManager.DETALLETableAdapter = Nothing
+        Me.TableAdapterManager.LECTORTableAdapter = Me.LECTORTableAdapter
+        Me.TableAdapterManager.MATERIAL_BIBLIOGRAFICOTableAdapter = Nothing
+        Me.TableAdapterManager.PRESTACION_Y_DEVOLUCIONTableAdapter = Nothing
+        Me.TableAdapterManager.TIPO_M_BIBLIOGRAFICOTableAdapter = Nothing
+        Me.TableAdapterManager.UpdateOrder = SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
         'frm_lector
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -525,11 +486,11 @@ Partial Class frm_lector
         Me.pn_container.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.LECTORBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.BD_BIBLIOTECA_V2DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
         CType(Me.LECTORDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.LECTORBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BD_BIBLIOTECA_V2DataSet, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -538,12 +499,9 @@ Partial Class frm_lector
     Private WithEvents lb_detusuario As Label
     Private WithEvents Panel1 As Panel
     Friend WithEvents IconButton2 As FontAwesome.Sharp.IconButton
-    Friend WithEvents ComboBox1 As ComboBox
     Friend WithEvents IconButton1 As FontAwesome.Sharp.IconButton
-    Friend WithEvents txt_buscat As TextBox
-    Friend WithEvents btn_descargarexcel As FontAwesome.Sharp.IconButton
+    Friend WithEvents txt_buscal As TextBox
     Friend WithEvents Label1 As Label
-    Friend WithEvents Label6 As Label
     Private WithEvents btn_guardarL As FontAwesome.Sharp.IconButton
     Private WithEvents btn_nuevoL As FontAwesome.Sharp.IconButton
     Private WithEvents btn_actualizarL As FontAwesome.Sharp.IconButton

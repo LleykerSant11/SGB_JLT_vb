@@ -115,13 +115,13 @@ Partial Class Inicio
         'sm_prestacion
         '
         Me.sm_prestacion.Name = "sm_prestacion"
-        Me.sm_prestacion.Size = New System.Drawing.Size(134, 22)
+        Me.sm_prestacion.Size = New System.Drawing.Size(152, 22)
         Me.sm_prestacion.Text = "Prestacion"
         '
         'sm_devolucion
         '
         Me.sm_devolucion.Name = "sm_devolucion"
-        Me.sm_devolucion.Size = New System.Drawing.Size(134, 22)
+        Me.sm_devolucion.Size = New System.Drawing.Size(152, 22)
         Me.sm_devolucion.Text = "Devolucion"
         '
         'menu_inventario

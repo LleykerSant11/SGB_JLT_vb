@@ -1,4 +1,5 @@
 ﻿Public Class frm_lector
+    Private buscal As DataView
     Private Sub LECTORBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.LECTORBindingSource.EndEdit()
@@ -16,6 +17,8 @@
     Private Sub frm_lector_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'BD_BIBLIOTECA_V2DataSet.LECTOR' table. You can move, or remove it, as needed.
         Me.LECTORTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.LECTOR)
+        buscal = Me.BD_BIBLIOTECA_V2DataSet.BIBLIOTECARIO.DefaultView
+        LECTORDataGridView.DataSource = buscal
 
     End Sub
 
@@ -148,5 +151,9 @@
         DireccionTextBox.Clear()
         CorreoTextBox.Clear()
         EstadoTextBox.Clear()
+    End Sub
+
+    Private Sub txt_buscab_TextChanged(sender As Object, e As EventArgs) Handles txt_buscal.TextChanged
+        buscal.RowFilter = String.Format("NombreApellidos LIKE '*{0}*'", txt_buscal.Text)
     End Sub
 End Class
