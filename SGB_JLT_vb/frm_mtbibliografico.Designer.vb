@@ -303,6 +303,7 @@ Partial Class frm_mtbibliografico
         'TipoMBTextBox
         '
         Me.TipoMBTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "TipoMB", True))
+        Me.TipoMBTextBox.Enabled = False
         Me.TipoMBTextBox.Location = New System.Drawing.Point(107, 62)
         Me.TipoMBTextBox.Name = "TipoMBTextBox"
         Me.TipoMBTextBox.Size = New System.Drawing.Size(108, 20)
@@ -321,6 +322,7 @@ Partial Class frm_mtbibliografico
         'MatBibTextBox
         '
         Me.MatBibTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "MatBib", True))
+        Me.MatBibTextBox.Enabled = False
         Me.MatBibTextBox.Location = New System.Drawing.Point(107, 36)
         Me.MatBibTextBox.Name = "MatBibTextBox"
         Me.MatBibTextBox.Size = New System.Drawing.Size(108, 20)
@@ -329,6 +331,7 @@ Partial Class frm_mtbibliografico
         'NombreTextBox
         '
         Me.NombreTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "Nombre", True))
+        Me.NombreTextBox.Enabled = False
         Me.NombreTextBox.Location = New System.Drawing.Point(107, 88)
         Me.NombreTextBox.Name = "NombreTextBox"
         Me.NombreTextBox.Size = New System.Drawing.Size(108, 20)
@@ -337,6 +340,7 @@ Partial Class frm_mtbibliografico
         'EditorialTextBox
         '
         Me.EditorialTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "Editorial", True))
+        Me.EditorialTextBox.Enabled = False
         Me.EditorialTextBox.Location = New System.Drawing.Point(107, 114)
         Me.EditorialTextBox.Name = "EditorialTextBox"
         Me.EditorialTextBox.Size = New System.Drawing.Size(108, 20)
@@ -345,6 +349,7 @@ Partial Class frm_mtbibliografico
         'FechAdquisicionDateTimePicker
         '
         Me.FechAdquisicionDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "FechAdquisicion", True))
+        Me.FechAdquisicionDateTimePicker.Enabled = False
         Me.FechAdquisicionDateTimePicker.Location = New System.Drawing.Point(107, 140)
         Me.FechAdquisicionDateTimePicker.Name = "FechAdquisicionDateTimePicker"
         Me.FechAdquisicionDateTimePicker.Size = New System.Drawing.Size(108, 20)
@@ -353,6 +358,7 @@ Partial Class frm_mtbibliografico
         'FormatoTextBox
         '
         Me.FormatoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "Formato", True))
+        Me.FormatoTextBox.Enabled = False
         Me.FormatoTextBox.Location = New System.Drawing.Point(107, 166)
         Me.FormatoTextBox.Name = "FormatoTextBox"
         Me.FormatoTextBox.Size = New System.Drawing.Size(108, 20)
@@ -361,6 +367,7 @@ Partial Class frm_mtbibliografico
         'EstadoTextBox
         '
         Me.EstadoTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "Estado", True))
+        Me.EstadoTextBox.Enabled = False
         Me.EstadoTextBox.Location = New System.Drawing.Point(107, 192)
         Me.EstadoTextBox.Name = "EstadoTextBox"
         Me.EstadoTextBox.Size = New System.Drawing.Size(108, 20)
@@ -369,6 +376,7 @@ Partial Class frm_mtbibliografico
         'AutorTextBox
         '
         Me.AutorTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "Autor", True))
+        Me.AutorTextBox.Enabled = False
         Me.AutorTextBox.Location = New System.Drawing.Point(107, 218)
         Me.AutorTextBox.Name = "AutorTextBox"
         Me.AutorTextBox.Size = New System.Drawing.Size(108, 20)
@@ -377,6 +385,7 @@ Partial Class frm_mtbibliografico
         'EjemplaresTextBox
         '
         Me.EjemplaresTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.MATERIAL_BIBLIOGRAFICOBindingSource, "Ejemplares", True))
+        Me.EjemplaresTextBox.Enabled = False
         Me.EjemplaresTextBox.Location = New System.Drawing.Point(107, 244)
         Me.EjemplaresTextBox.Name = "EjemplaresTextBox"
         Me.EjemplaresTextBox.Size = New System.Drawing.Size(108, 20)
@@ -385,6 +394,7 @@ Partial Class frm_mtbibliografico
         'btn_guardarMB
         '
         Me.btn_guardarMB.BackColor = System.Drawing.Color.DarkGreen
+        Me.btn_guardarMB.Enabled = False
         Me.btn_guardarMB.ForeColor = System.Drawing.Color.White
         Me.btn_guardarMB.IconChar = FontAwesome.Sharp.IconChar.TelegramPlane
         Me.btn_guardarMB.IconColor = System.Drawing.Color.White
@@ -419,6 +429,7 @@ Partial Class frm_mtbibliografico
         'btn_actualizarMB
         '
         Me.btn_actualizarMB.BackColor = System.Drawing.Color.SteelBlue
+        Me.btn_actualizarMB.Enabled = False
         Me.btn_actualizarMB.ForeColor = System.Drawing.Color.White
         Me.btn_actualizarMB.IconChar = FontAwesome.Sharp.IconChar.Broom
         Me.btn_actualizarMB.IconColor = System.Drawing.Color.White
@@ -498,9 +509,9 @@ Partial Class frm_mtbibliografico
         Me.MATERIAL_BIBLIOGRAFICODataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.MATERIAL_BIBLIOGRAFICODataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
         Me.MATERIAL_BIBLIOGRAFICODataGridView.DataSource = Me.MATERIAL_BIBLIOGRAFICOBindingSource
-        Me.MATERIAL_BIBLIOGRAFICODataGridView.Location = New System.Drawing.Point(373, 229)
+        Me.MATERIAL_BIBLIOGRAFICODataGridView.Location = New System.Drawing.Point(286, 100)
         Me.MATERIAL_BIBLIOGRAFICODataGridView.Name = "MATERIAL_BIBLIOGRAFICODataGridView"
-        Me.MATERIAL_BIBLIOGRAFICODataGridView.Size = New System.Drawing.Size(728, 220)
+        Me.MATERIAL_BIBLIOGRAFICODataGridView.Size = New System.Drawing.Size(836, 220)
         Me.MATERIAL_BIBLIOGRAFICODataGridView.TabIndex = 21
         '
         'DataGridViewTextBoxColumn2

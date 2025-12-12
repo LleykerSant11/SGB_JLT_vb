@@ -85,6 +85,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BD_BIBLIOTECA_V2DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="BD_BIBLIOTECA_V2DataSet.vb">
+      <DependentUpon>BD_BIBLIOTECA_V2DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="conexion.vb" />
     <Compile Include="frm_bibliotecario.Designer.vb">
       <DependentUpon>frm_bibliotecario.vb</DependentUpon>

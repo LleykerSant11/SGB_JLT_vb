@@ -85,14 +85,79 @@
         NombreTextBox.Text,
         EditorialTextBox.Text,
         AutorTextBox.Text,
-        FechAdquisicionDateTimePicker.Text,
+        FechAdquisicionDateTimePicker.Value,
         FormatoTextBox.Text,
         EstadoTextBox.Text,
-        EjemplaresTextBox.Text
-    )
+        EjemplaresTextBox.Text)
             MsgBox("Bibliotecario registrado con éxito.", MsgBoxStyle.Information)
         Else
             ' ...
         End If
+    End Sub
+
+    Private Sub btn_modificarMB_Click(sender As Object, e As EventArgs) Handles btn_modificarMB.Click
+        btn_nuevoMB.Enabled = False
+        btn_guardarMB.Enabled = False
+        btn_modificarMB.Enabled = False
+        btn_actualizarMB.Enabled = True
+        btn_eliminarMB.Enabled = False
+        MATERIAL_BIBLIOGRAFICODataGridView.Enabled = False
+        MatBibTextBox.Enabled = False
+        TipoMBTextBox.Enabled = True
+        NombreTextBox.Enabled = True
+        EditorialTextBox.Enabled = True
+        AutorTextBox.Enabled = True
+        FechAdquisicionDateTimePicker.Enabled = True
+        FormatoTextBox.Enabled = True
+        EstadoTextBox.Enabled = True
+        EjemplaresTextBox.Enabled = True
+    End Sub
+
+    Private Sub btn_actualizarMB_Click(sender As Object, e As EventArgs) Handles btn_actualizarMB.Click
+        If (MsgBox("¿Estas seguro de modificar los datos?", vbYesNo, "Verificando Datos")) Then
+            Me.MATERIAL_BIBLIOGRAFICOTableAdapter.ACTUALIZARMB(
+            MatBibTextBox.Text,
+            TipoMBTextBox.Text,
+            NombreTextBox.Text,
+            EditorialTextBox.Text,
+            AutorTextBox.Text,
+            FechAdquisicionDateTimePicker.Text,
+            FormatoTextBox.Text,
+            EstadoTextBox.Text,
+            EjemplaresTextBox.Text,
+            MatBibTextBox.Text)
+            MsgBox("Datos del cliente actualizado con exito", vbInformation, "Insertar Datos")
+            Me.MATERIAL_BIBLIOGRAFICOTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.MATERIAL_BIBLIOGRAFICO)
+        End If
+
+        btn_nuevoMB.Enabled = True
+        btn_guardarMB.Enabled = True
+        btn_modificarMB.Enabled = True
+        btn_actualizarMB.Enabled = False
+        btn_eliminarMB.Enabled = False
+        MATERIAL_BIBLIOGRAFICODataGridView.Enabled = True
+        MatBibTextBox.Enabled = False
+        TipoMBTextBox.Enabled = False
+        NombreTextBox.Enabled = False
+        EditorialTextBox.Enabled = False
+        AutorTextBox.Enabled = False
+        FechAdquisicionDateTimePicker.Enabled = False
+        FormatoTextBox.Enabled = False
+        EstadoTextBox.Enabled = False
+        EjemplaresTextBox.Enabled = False
+    End Sub
+
+    Private Sub btn_eliminarMB_Click(sender As Object, e As EventArgs) Handles btn_eliminarMB.Click
+        Me.MATERIAL_BIBLIOGRAFICOTableAdapter.ELMINARMB(MatBibTextBox.Text)
+        Me.MATERIAL_BIBLIOGRAFICOTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.MATERIAL_BIBLIOGRAFICO)
+
+        MatBibTextBox.Clear()
+        TipoMBTextBox.Clear()
+        NombreTextBox.Clear()
+        EditorialTextBox.Clear()
+        AutorTextBox.Clear()
+        FormatoTextBox.Clear()
+        EstadoTextBox.Clear()
+        EjemplaresTextBox.Enabled = True
     End Sub
 End Class
