@@ -78,7 +78,113 @@ Public Class frm_prestadevol
     End Sub
 
     Private Sub btn_guardarPD_Click(sender As Object, e As EventArgs) Handles btn_guardarPD.Click
+        ' 1. VALIDACIÓN DE DATOS
+        ' ----------------------
 
+        If Len(Trim(NumeroRegistroTextBox.Text)) = 0 Then
+            MsgBox("Ingrese el Número de Registro.", vbCritical, "Validando datos")
+            NumeroRegistroTextBox.Focus()
+            Exit Sub
+        End If
+
+        If Len(Trim(CodLecTextBox.Text)) = 0 Then
+            MsgBox("Ingrese el Código del Lector (CodLec).", vbCritical, "Validando datos")
+            CodLecTextBox.Focus()
+            Exit Sub
+        End If
+
+        If Len(Trim(CODBIBLITextBox.Text)) = 0 Then
+            MsgBox("Ingrese el Código del Bibliotecario (CodBli).", vbCritical, "Validando datos")
+            CODBIBLITextBox.Focus()
+            Exit Sub
+        End If
+
+        ' --- Validación para la tabla DETALLE (asumiendo que solo se registra un detalle por prestación) ---
+
+        If Len(Trim(NumeroRegistroTextBox.Text)) = 0 Then
+            MsgBox("Ingrese el Código de Material Bibliográfico (MatBib).", vbCritical, "Validando datos")
+            NumeroRegistroTextBox.Focus()
+            Exit Sub
+        End If
+
+        If Not IsNumeric(MatBibTextBox.Text) OrElse CInt(MatBibTextBox.Text) <= 0 Then
+            MsgBox("La Cantidad debe ser un número positivo.", vbCritical, "Validando datos")
+            MatBibTextBox.Focus()
+            Exit Sub
+        End If
+
+        ' Validar Cantidad (Debe ser un número positivo, como se vio en el error)
+        Dim cantidadPrestada As Integer
+        If Not Integer.TryParse(CantidadTextBox.Text, cantidadPrestada) OrElse cantidadPrestada <= 0 Then
+            MsgBox("La Cantidad debe ser un número positivo.", vbCritical, "Validando datos")
+            CantidadTextBox.Focus()
+            Exit Sub
+        End If
+
+        ' Nota: La validación de fechas es más compleja, asumiremos que los controles DateTimePicker ya tienen valores válidos.
+
+
+        ' 2. CONFIRMACIÓN Y LLAMADA A INSERCIÓN TRANSACCIONAL
+        ' ----------------------------------------------------
+
+        If MsgBox("¿Está seguro de registrar esta Prestación y su Detalle?", vbYesNo + vbQuestion, "Confirmar Guardado") = vbYes Then
+
+            ' El uso de TableAdapters no maneja transacciones automáticamente. 
+            ' Lo haremos secuencialmente, lo ideal es usar TransactionScope o Stored Procedures.
+
+            Try
+                ' --- A. INSERCIÓN EN PRESTACION_Y_DEVOLUCION ---
+
+                Me.PRESTACION_Y_DEVOLUCIONTableAdapter.InsertarPD(
+                NumeroRegistroTextBox.Text,
+                FechaHoraPrestacionDateTimePicker.Value,
+                FechaHoraDevolucionDateTimePicker.Value,
+                CodLecTextBox.Text,
+                CODBIBLITextBox.Text
+            )
+
+                ' --- B. INSERCIÓN EN DETALLE ---
+
+                Me.DETALLETableAdapter.InsertarDet(
+                NumDetalleTextBox.Text,
+                CInt(CantidadTextBox.Text),
+                EstadoMatTextBox.Text,
+                ObservacionesTextBox.Text,
+                MatBibTextBox.Text,
+                NumeroRegistroTextBox.Text  ' La clave foránea que relaciona con Prestación
+            )
+
+                ' Si ambos comandos tienen éxito:
+                MsgBox("Prestación y Detalle registrados con éxito.", MsgBoxStyle.Information, "Registro Exitoso")
+
+                ' 3. RECONFIGURACIÓN DE LA INTERFAZ (Siguiendo tu patrón)
+                ' -------------------------------------------------------
+
+                ' Deshabilitar/Habilitar Controles (Ajusta los nombres de tus botones)
+                btn_nuevoPD.Enabled = True
+                btn_guardarPD.Enabled = False
+                btn_modificarPD.Enabled = True
+                btn_eliminarPD.Enabled = True
+
+                ' Deshabilitar campos de texto (ya que se guardó)
+                ' (Necesitas mapear todos los campos de tu interfaz a sus nombres reales: txtNumeroRegistro, txtCodLec, etc.)
+                ' txtNumeroRegistro.Enabled = False
+                ' txtCodLec.Enabled = False
+                ' ... (otros campos de datos) ...
+
+                ' Opcional: Recargar el DataGridView principal si lo tienes
+                Me.PRESTACION_Y_DEVOLUCIONTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.PRESTACION_Y_DEVOLUCION)
+
+            Catch ex As Exception
+                ' Manejo de errores (ej. NúmeroRegistro ya existe, error de tipo de dato)
+                MsgBox("Ocurrió un error al guardar: " & ex.Message, vbCritical, "Error de Base de Datos")
+
+                ' Si falla, volvemos a habilitar el botón de guardar
+                btn_guardarPD.Enabled = True
+
+            End Try
+
+        End If
     End Sub
 
     Private Sub btn_modificarPD_Click(sender As Object, e As EventArgs) Handles btn_modificarPD.Click
