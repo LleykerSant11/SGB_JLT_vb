@@ -78,8 +78,8 @@ Public Class frm_prestadevol
     End Sub
 
     Private Sub btn_guardarPD_Click(sender As Object, e As EventArgs) Handles btn_guardarPD.Click
-        ' 1. VALIDACIÓN DE DATOS
-        ' ----------------------
+        ' 1. VALIDACIÓN DE DATOS REQUERIDOS
+        ' ----------------------------------
 
         If Len(Trim(NumeroRegistroTextBox.Text)) = 0 Then
             MsgBox("Ingrese el Número de Registro.", vbCritical, "Validando datos")
@@ -99,21 +99,19 @@ Public Class frm_prestadevol
             Exit Sub
         End If
 
-        ' --- Validación para la tabla DETALLE (asumiendo que solo se registra un detalle por prestación) ---
-
-        If Len(Trim(NumeroRegistroTextBox.Text)) = 0 Then
+        If Len(Trim(MatBibTextBox.Text)) = 0 Then
             MsgBox("Ingrese el Código de Material Bibliográfico (MatBib).", vbCritical, "Validando datos")
-            NumeroRegistroTextBox.Focus()
-            Exit Sub
-        End If
-
-        If Not IsNumeric(MatBibTextBox.Text) OrElse CInt(MatBibTextBox.Text) <= 0 Then
-            MsgBox("La Cantidad debe ser un número positivo.", vbCritical, "Validando datos")
             MatBibTextBox.Focus()
             Exit Sub
         End If
 
-        ' Validar Cantidad (Debe ser un número positivo, como se vio en el error)
+        If Len(Trim(NumDetalleTextBox.Text)) = 0 Then
+            MsgBox("Ingrese el Número de Detalle (NumDetalle).", vbCritical, "Validando datos")
+            NumDetalleTextBox.Focus()
+            Exit Sub
+        End If
+
+        ' Validar Cantidad (debe ser un número positivo, ya que es obligatorio)
         Dim cantidadPrestada As Integer
         If Not Integer.TryParse(CantidadTextBox.Text, cantidadPrestada) OrElse cantidadPrestada <= 0 Then
             MsgBox("La Cantidad debe ser un número positivo.", vbCritical, "Validando datos")
@@ -121,67 +119,62 @@ Public Class frm_prestadevol
             Exit Sub
         End If
 
-        ' Nota: La validación de fechas es más compleja, asumiremos que los controles DateTimePicker ya tienen valores válidos.
 
-
-        ' 2. CONFIRMACIÓN Y LLAMADA A INSERCIÓN TRANSACCIONAL
+        ' 2. CONFIRMACIÓN Y MANEJO DE NULLS PARA INSERCIÓN
         ' ----------------------------------------------------
 
         If MsgBox("¿Está seguro de registrar esta Prestación y su Detalle?", vbYesNo + vbQuestion, "Confirmar Guardado") = vbYes Then
 
-            ' El uso de TableAdapters no maneja transacciones automáticamente. 
-            ' Lo haremos secuencialmente, lo ideal es usar TransactionScope o Stored Procedures.
-
             Try
-                ' --- A. INSERCIÓN EN PRESTACION_Y_DEVOLUCION ---
+                ' Manejo de NULLS (Solo aplica si dejas campos opcionales vacíos al insertar)
+                Dim observacionesDetalle As Object = IIf(Len(Trim(ObservacionesTextBox.Text)) = 0, DBNull.Value, ObservacionesTextBox.Text)
+                Dim estadoMaterial As Object = IIf(Len(Trim(EstadoMatTextBox.Text)) = 0, DBNull.Value, EstadoMatTextBox.Text)
+                ' FechaHoraDevolucion también podría ser NULL al insertar si la devolución es futura.
+                ' Asumimos que al guardar, la Fecha de Devolución puede ser NULL si el control no está 'Checked'.
+                Dim fechaDevolucion As Object = IIf(FechaHoraDevolucionDateTimePicker.Checked = False, DBNull.Value, FechaHoraDevolucionDateTimePicker.Value)
 
+
+                ' --- A. INSERCIÓN EN PRESTACION_Y_DEVOLUCION ---
                 Me.PRESTACION_Y_DEVOLUCIONTableAdapter.InsertarPD(
                 NumeroRegistroTextBox.Text,
                 FechaHoraPrestacionDateTimePicker.Value,
-                FechaHoraDevolucionDateTimePicker.Value,
+                fechaDevolucion,
                 CodLecTextBox.Text,
                 CODBIBLITextBox.Text
             )
 
                 ' --- B. INSERCIÓN EN DETALLE ---
-
                 Me.DETALLETableAdapter.InsertarDet(
                 NumDetalleTextBox.Text,
-                CInt(CantidadTextBox.Text),
-                EstadoMatTextBox.Text,
-                ObservacionesTextBox.Text,
+                cantidadPrestada,
+                estadoMaterial,
+                observacionesDetalle,
                 MatBibTextBox.Text,
-                NumeroRegistroTextBox.Text  ' La clave foránea que relaciona con Prestación
+                NumeroRegistroTextBox.Text
             )
 
-                ' Si ambos comandos tienen éxito:
                 MsgBox("Prestación y Detalle registrados con éxito.", MsgBoxStyle.Information, "Registro Exitoso")
 
-                ' 3. RECONFIGURACIÓN DE LA INTERFAZ (Siguiendo tu patrón)
-                ' -------------------------------------------------------
 
-                ' Deshabilitar/Habilitar Controles (Ajusta los nombres de tus botones)
+                ' 3. RECARGA Y RECONFIGURACIÓN DE LA INTERFAZ
+                ' ------------------------------------------
+
+                Me.PRESTACION_Y_DEVOLUCIONTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.PRESTACION_Y_DEVOLUCION)
+
+
                 btn_nuevoPD.Enabled = True
                 btn_guardarPD.Enabled = False
                 btn_modificarPD.Enabled = True
+                btn_actualizarPD.Enabled = False
                 btn_eliminarPD.Enabled = True
 
-                ' Deshabilitar campos de texto (ya que se guardó)
-                ' (Necesitas mapear todos los campos de tu interfaz a sus nombres reales: txtNumeroRegistro, txtCodLec, etc.)
-                ' txtNumeroRegistro.Enabled = False
-                ' txtCodLec.Enabled = False
-                ' ... (otros campos de datos) ...
-
-                ' Opcional: Recargar el DataGridView principal si lo tienes
-                Me.PRESTACION_Y_DEVOLUCIONTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.PRESTACION_Y_DEVOLUCION)
+                ' Deshabilitar todos los campos de entrada
+                ' (Necesitas mapear todos los campos de tu interfaz)
+                ' ...
 
             Catch ex As Exception
-                ' Manejo de errores (ej. NúmeroRegistro ya existe, error de tipo de dato)
                 MsgBox("Ocurrió un error al guardar: " & ex.Message, vbCritical, "Error de Base de Datos")
-
-                ' Si falla, volvemos a habilitar el botón de guardar
                 btn_guardarPD.Enabled = True
-
             End Try
 
         End If
@@ -208,5 +201,64 @@ Public Class frm_prestadevol
         EstadoMatTextBox.Enabled = True
         NumDetalleTextBox.Enabled = False
 
+    End Sub
+
+    Private Sub btn_eliminarPD_Click(sender As Object, e As EventArgs) Handles btn_eliminarPD.Click
+        ' 1. VALIDACIÓN
+        ' ------------------
+
+        If Len(Trim(NumeroRegistroTextBox.Text)) = 0 Then
+            MsgBox("Debe seleccionar un Número de Registro para poder eliminar.", vbCritical, "Error de Selección")
+            Exit Sub
+        End If
+
+        ' 2. CONFIRMACIÓN
+        ' ------------------
+
+        Dim numeroRegistroAEliminar As String = NumeroRegistroTextBox.Text
+
+        If MsgBox("¿Está seguro de eliminar esta Prestación (" & numeroRegistroAEliminar & ") y todos sus Detalles?", vbYesNo + vbCritical, "Confirmar Eliminación") = vbYes Then
+
+            Try
+                ' El orden de eliminación es CRÍTICO: 
+                ' 1. Detalle (Hijo)
+                ' 2. Prestación (Padre)
+
+                ' --- A. ELIMINAR REGISTROS DE DETALLE ---
+                ' Asume que tienes un método ELIMINARDET en tu DETALLETableAdapter que elimina por NumeroRegistro
+                Me.DETALLETableAdapter.EliminarDet(numeroRegistroAEliminar)
+
+                ' --- B. ELIMINAR REGISTRO DE PRESTACION_Y_DEVOLUCION ---
+                ' Asume que tienes un método ELIMINARPD en tu PRESTACION_Y_DEVOLUCIONTableAdapter que elimina por NumeroRegistro
+                Me.PRESTACION_Y_DEVOLUCIONTableAdapter.EliminarPD(numeroRegistroAEliminar)
+
+                ' 3. RECARGA Y LIMPIEZA DE INTERFAZ (Siguiendo tu patrón)
+                ' --------------------------------------------------------
+
+                MsgBox("Prestación y Detalles eliminados con éxito.", vbInformation, "Eliminación Exitosa")
+
+                ' Recargar ambas tablas
+                Me.PRESTACION_Y_DEVOLUCIONTableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.PRESTACION_Y_DEVOLUCION)
+                ' Recargar la tabla DETALLE (para mostrarla vacía o con los nuevos filtros)
+                Me.DETALLETableAdapter.Fill(Me.BD_BIBLIOTECA_V2DataSet.DETALLE)
+
+                ' Limpiar campos de texto (Siguiendo tu estructura)
+                NumeroRegistroTextBox.Clear()
+                CodLecTextBox.Clear()
+                CODBIBLITextBox.Clear()
+
+                NumDetalleTextBox.Clear()
+                CantidadTextBox.Clear()
+                EstadoMatTextBox.Clear()
+                ObservacionesTextBox.Clear()
+                MatBibTextBox.Clear()
+
+                ' Resetear fechas a valores por defecto si es necesario
+
+            Catch ex As Exception
+                MsgBox("Error al eliminar los registros: " & ex.Message, vbCritical, "Error de Base de Datos")
+            End Try
+
+        End If
     End Sub
 End Class
