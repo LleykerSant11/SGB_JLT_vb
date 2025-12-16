@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class frm_prestadevol
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class frm_prestadevol
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim NumeroRegistroLabel As System.Windows.Forms.Label
@@ -107,16 +107,6 @@ Partial Class frm_prestadevol
         Me.DETALLETableAdapter = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.DETALLETableAdapter()
         Me.MATERIAL_BIBLIOGRAFICOTableAdapter = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSetTableAdapters.MATERIAL_BIBLIOGRAFICOTableAdapter()
         Me.BD_BIBLIOTECA_V2DataSet1 = New SGB_JLT_vb.BD_BIBLIOTECA_V2DataSet()
-        Me.IconButton1 = New FontAwesome.Sharp.IconButton()
-        Me.txt_agregar = New FontAwesome.Sharp.IconButton()
-        Me.DETALLEDataGridView = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn30 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn31 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn32 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn33 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn34 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn35 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Label5 = New System.Windows.Forms.Label()
         NumeroRegistroLabel = New System.Windows.Forms.Label()
         FechaHoraPrestacionLabel = New System.Windows.Forms.Label()
         FechaHoraDevolucionLabel = New System.Windows.Forms.Label()
@@ -142,7 +132,6 @@ Partial Class frm_prestadevol
         CType(Me.PRESTACION_Y_DEVOLUCIONDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TEMPORALBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BD_BIBLIOTECA_V2DataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DETALLEDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'NumeroRegistroLabel
@@ -680,7 +669,7 @@ Partial Class frm_prestadevol
         Me.btn_guardarPD.IconColor = System.Drawing.Color.White
         Me.btn_guardarPD.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btn_guardarPD.IconSize = 25
-        Me.btn_guardarPD.Location = New System.Drawing.Point(965, 61)
+        Me.btn_guardarPD.Location = New System.Drawing.Point(938, 143)
         Me.btn_guardarPD.Name = "btn_guardarPD"
         Me.btn_guardarPD.Size = New System.Drawing.Size(163, 35)
         Me.btn_guardarPD.TabIndex = 50
@@ -691,13 +680,13 @@ Partial Class frm_prestadevol
         '
         'btn_nuevoPD
         '
-        Me.btn_nuevoPD.BackColor = System.Drawing.Color.Teal
+        Me.btn_nuevoPD.BackColor = System.Drawing.Color.Indigo
         Me.btn_nuevoPD.ForeColor = System.Drawing.Color.White
         Me.btn_nuevoPD.IconChar = FontAwesome.Sharp.IconChar.TelegramPlane
         Me.btn_nuevoPD.IconColor = System.Drawing.Color.White
         Me.btn_nuevoPD.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btn_nuevoPD.IconSize = 25
-        Me.btn_nuevoPD.Location = New System.Drawing.Point(964, 23)
+        Me.btn_nuevoPD.Location = New System.Drawing.Point(937, 105)
         Me.btn_nuevoPD.Name = "btn_nuevoPD"
         Me.btn_nuevoPD.Size = New System.Drawing.Size(163, 35)
         Me.btn_nuevoPD.TabIndex = 49
@@ -715,7 +704,7 @@ Partial Class frm_prestadevol
         Me.btn_actualizarPD.IconColor = System.Drawing.Color.White
         Me.btn_actualizarPD.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btn_actualizarPD.IconSize = 25
-        Me.btn_actualizarPD.Location = New System.Drawing.Point(965, 143)
+        Me.btn_actualizarPD.Location = New System.Drawing.Point(938, 225)
         Me.btn_actualizarPD.Name = "btn_actualizarPD"
         Me.btn_actualizarPD.Size = New System.Drawing.Size(163, 35)
         Me.btn_actualizarPD.TabIndex = 48
@@ -732,7 +721,7 @@ Partial Class frm_prestadevol
         Me.btn_eliminarPD.IconColor = System.Drawing.Color.White
         Me.btn_eliminarPD.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btn_eliminarPD.IconSize = 25
-        Me.btn_eliminarPD.Location = New System.Drawing.Point(964, 184)
+        Me.btn_eliminarPD.Location = New System.Drawing.Point(937, 266)
         Me.btn_eliminarPD.Name = "btn_eliminarPD"
         Me.btn_eliminarPD.Size = New System.Drawing.Size(163, 35)
         Me.btn_eliminarPD.TabIndex = 47
@@ -743,13 +732,13 @@ Partial Class frm_prestadevol
         '
         'btn_modificarPD
         '
-        Me.btn_modificarPD.BackColor = System.Drawing.Color.DarkGreen
+        Me.btn_modificarPD.BackColor = System.Drawing.Color.CadetBlue
         Me.btn_modificarPD.ForeColor = System.Drawing.Color.White
         Me.btn_modificarPD.IconChar = FontAwesome.Sharp.IconChar.TelegramPlane
         Me.btn_modificarPD.IconColor = System.Drawing.Color.White
         Me.btn_modificarPD.IconFont = FontAwesome.Sharp.IconFont.[Auto]
         Me.btn_modificarPD.IconSize = 25
-        Me.btn_modificarPD.Location = New System.Drawing.Point(964, 102)
+        Me.btn_modificarPD.Location = New System.Drawing.Point(937, 184)
         Me.btn_modificarPD.Name = "btn_modificarPD"
         Me.btn_modificarPD.Size = New System.Drawing.Size(163, 35)
         Me.btn_modificarPD.TabIndex = 46
@@ -845,108 +834,12 @@ Partial Class frm_prestadevol
         Me.BD_BIBLIOTECA_V2DataSet1.DataSetName = "BD_BIBLIOTECA_V2DataSet"
         Me.BD_BIBLIOTECA_V2DataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'IconButton1
-        '
-        Me.IconButton1.BackColor = System.Drawing.Color.Red
-        Me.IconButton1.ForeColor = System.Drawing.Color.White
-        Me.IconButton1.IconChar = FontAwesome.Sharp.IconChar.TelegramPlane
-        Me.IconButton1.IconColor = System.Drawing.Color.White
-        Me.IconButton1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.IconButton1.IconSize = 25
-        Me.IconButton1.Location = New System.Drawing.Point(913, 243)
-        Me.IconButton1.Name = "IconButton1"
-        Me.IconButton1.Size = New System.Drawing.Size(163, 35)
-        Me.IconButton1.TabIndex = 51
-        Me.IconButton1.Text = "eliminar"
-        Me.IconButton1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.IconButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.IconButton1.UseVisualStyleBackColor = False
-        '
-        'txt_agregar
-        '
-        Me.txt_agregar.BackColor = System.Drawing.Color.Red
-        Me.txt_agregar.ForeColor = System.Drawing.Color.White
-        Me.txt_agregar.IconChar = FontAwesome.Sharp.IconChar.TelegramPlane
-        Me.txt_agregar.IconColor = System.Drawing.Color.White
-        Me.txt_agregar.IconFont = FontAwesome.Sharp.IconFont.[Auto]
-        Me.txt_agregar.IconSize = 25
-        Me.txt_agregar.Location = New System.Drawing.Point(913, 291)
-        Me.txt_agregar.Name = "txt_agregar"
-        Me.txt_agregar.Size = New System.Drawing.Size(163, 35)
-        Me.txt_agregar.TabIndex = 52
-        Me.txt_agregar.Text = "Agregar"
-        Me.txt_agregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.txt_agregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.txt_agregar.UseVisualStyleBackColor = False
-        '
-        'DETALLEDataGridView
-        '
-        Me.DETALLEDataGridView.AutoGenerateColumns = False
-        Me.DETALLEDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DETALLEDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn30, Me.DataGridViewTextBoxColumn31, Me.DataGridViewTextBoxColumn32, Me.DataGridViewTextBoxColumn33, Me.DataGridViewTextBoxColumn34, Me.DataGridViewTextBoxColumn35})
-        Me.DETALLEDataGridView.DataSource = Me.DETALLEBindingSource
-        Me.DETALLEDataGridView.Location = New System.Drawing.Point(521, 624)
-        Me.DETALLEDataGridView.Name = "DETALLEDataGridView"
-        Me.DETALLEDataGridView.Size = New System.Drawing.Size(639, 220)
-        Me.DETALLEDataGridView.TabIndex = 52
-        '
-        'DataGridViewTextBoxColumn30
-        '
-        Me.DataGridViewTextBoxColumn30.DataPropertyName = "NumDetalle"
-        Me.DataGridViewTextBoxColumn30.HeaderText = "NumDetalle"
-        Me.DataGridViewTextBoxColumn30.Name = "DataGridViewTextBoxColumn30"
-        '
-        'DataGridViewTextBoxColumn31
-        '
-        Me.DataGridViewTextBoxColumn31.DataPropertyName = "Cantidad"
-        Me.DataGridViewTextBoxColumn31.HeaderText = "Cantidad"
-        Me.DataGridViewTextBoxColumn31.Name = "DataGridViewTextBoxColumn31"
-        '
-        'DataGridViewTextBoxColumn32
-        '
-        Me.DataGridViewTextBoxColumn32.DataPropertyName = "EstadoMat"
-        Me.DataGridViewTextBoxColumn32.HeaderText = "EstadoMat"
-        Me.DataGridViewTextBoxColumn32.Name = "DataGridViewTextBoxColumn32"
-        '
-        'DataGridViewTextBoxColumn33
-        '
-        Me.DataGridViewTextBoxColumn33.DataPropertyName = "Observaciones"
-        Me.DataGridViewTextBoxColumn33.HeaderText = "Observaciones"
-        Me.DataGridViewTextBoxColumn33.Name = "DataGridViewTextBoxColumn33"
-        '
-        'DataGridViewTextBoxColumn34
-        '
-        Me.DataGridViewTextBoxColumn34.DataPropertyName = "MatBib"
-        Me.DataGridViewTextBoxColumn34.HeaderText = "MatBib"
-        Me.DataGridViewTextBoxColumn34.Name = "DataGridViewTextBoxColumn34"
-        '
-        'DataGridViewTextBoxColumn35
-        '
-        Me.DataGridViewTextBoxColumn35.DataPropertyName = "NumeroRegistro"
-        Me.DataGridViewTextBoxColumn35.HeaderText = "NumeroRegistro"
-        Me.DataGridViewTextBoxColumn35.Name = "DataGridViewTextBoxColumn35"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Font = New System.Drawing.Font("Copperplate Gothic Light", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.ForeColor = System.Drawing.SystemColors.Control
-        Me.Label5.Location = New System.Drawing.Point(518, 607)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(263, 14)
-        Me.Label5.TabIndex = 53
-        Me.Label5.Text = "Visualiza el detalle de la prestacion"
-        '
         'frm_prestadevol
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(4, Byte), Integer), CType(CType(132, Byte), Integer), CType(CType(36, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(1172, 856)
-        Me.Controls.Add(Me.Label5)
-        Me.Controls.Add(Me.DETALLEDataGridView)
-        Me.Controls.Add(Me.txt_agregar)
-        Me.Controls.Add(Me.IconButton1)
+        Me.ClientSize = New System.Drawing.Size(1172, 607)
         Me.Controls.Add(Me.PRESTACION_Y_DEVOLUCIONDataGridView)
         Me.Controls.Add(Me.btn_guardarPD)
         Me.Controls.Add(Me.btn_nuevoPD)
@@ -983,7 +876,6 @@ Partial Class frm_prestadevol
         CType(Me.PRESTACION_Y_DEVOLUCIONDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.TEMPORALBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BD_BIBLIOTECA_V2DataSet1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DETALLEDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1062,14 +954,4 @@ Partial Class frm_prestadevol
     Friend WithEvents DataGridViewTextBoxColumn19 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn20 As DataGridViewTextBoxColumn
     Friend WithEvents NumeroRegistroTextBox1 As TextBox
-    Private WithEvents IconButton1 As FontAwesome.Sharp.IconButton
-    Private WithEvents txt_agregar As FontAwesome.Sharp.IconButton
-    Friend WithEvents DETALLEDataGridView As DataGridView
-    Friend WithEvents DataGridViewTextBoxColumn30 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn31 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn32 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn33 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn34 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn35 As DataGridViewTextBoxColumn
-    Friend WithEvents Label5 As Label
 End Class
